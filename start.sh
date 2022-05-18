@@ -8,6 +8,11 @@ do
     read parametr
     if [ $parametr == "-u" ] || [ $parametr == "-d" ];
     then
+        if [ $parametr == "-u" ]; then
+            echo "Selected UP sort"
+        elif [ $parametr == "-d" ]; then
+            echo "Selected DOWN sort"
+        fi
         break;
     
     elif [ $parametr != "-u" ] || [ $parametr != "-d" ];
@@ -16,5 +21,18 @@ do
     fi
 done
 
+echo "test massive"
+
+mass=(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0)
+
+for i in ${!mass[@]}; 
+do
+	echo "Enter $i's element"
+	read temp
+	mass[$i]=$temp
+done
+
+echo "Massive: ${mass[@]}"
 
 
+eval "bash sort.sh $parametr $mass{@}"
