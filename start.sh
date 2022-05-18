@@ -33,6 +33,3 @@ do
 done
 
 echo "Massive: ${mass[@]}"
-
-
-eval "bash sort.sh $parametr $mass{@}"

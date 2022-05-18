@@ -21,7 +21,8 @@ do
     fi
 done
 
-echo "Fill massive"
+echo ""
+echo "Fill array"
 
 mass=(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0)
 
@@ -32,19 +33,44 @@ do
 	mass[$i]=$temp
 done
 
-echo "Type: $parametr"
-echo "Massive: ${mass[@]}"
+echo "Array:"
+echo ${mass[@]}
+echo ""
+echo ""
+echo ""
+echo "Start sorting..."
 
+if [ "$parametr" == "-d" ]; 
+then
+    echo "Type sort: DOWN"
+    for(( j=1; j < 20; j++ ))
+    do
+        key=${mass[j]}
+        let i=j-1
+        while [ $i -ge 0 -a ${mass[$i]} -lt $key ]
+        do
+            mass[$[$i+1]]=${mass[$i]}
+            let i--
+        done
+        mass[$[$i+1]]=$key
+    done
 
-if [ "$1" == "-d" ]; then
-echo "Type sort: DOWN"
-
-
-
-elif [ "$1" == "-u" ]; then
-echo "Type sort: UP"
-
-
-
-
+elif [ "$parametr" == "-u" ]; 
+then
+    echo "Type sort: UP"
+    for(( j=1; j < 20; j++ ))
+    do
+        key=${mass[$j]}
+        let i=j-1
+        while [ $i -ge 0 -a ${mass[$i]} -gt $key ]
+        do
+            mass[$[$i+1]]=${mass[$i]}
+            let i--
+        done
+        mass[$[$i+1]]=$key
+    done
 fi
+
+echo ""
+echo "Sorted array:"
+echo ${mass[@]}
