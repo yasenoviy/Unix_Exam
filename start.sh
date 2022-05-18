@@ -8,6 +8,11 @@ do
     read parametr
     if [ $parametr == "-u" ] || [ $parametr == "-d" ];
     then
+        if [ $parametr = "-u"]; then
+            echo "Selected UP sort"
+        else; then
+            echo "Selected DOWN sort"
+        fi
         break;
     
     elif [ $parametr != "-u" ] || [ $parametr != "-d" ];
@@ -15,6 +20,3 @@ do
         echo "incorrect parametr"
     fi
 done
-
-
-
